@@ -20,6 +20,7 @@ function createWindow(): void {
     backgroundColor: '#0f1115',
     autoHideMenuBar: true,
     title: 'ArchVita',
+    icon: app.isPackaged ? join(process.resourcesPath, 'icon.png') : join(__dirname, '../../resources/icon.png'),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: true,

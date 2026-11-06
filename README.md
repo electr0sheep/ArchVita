@@ -165,7 +165,8 @@ there with the auto-start option makes later launches go straight in.
 ```
 .github/         CI, launcher and release workflows
 launcher/        C source for the launcher eboot.bin (VitaSDK, CMake)
-resources/       bundled launcher binary (not committed; see Requirements)
+resources/       app icon (icon.svg is the source) and the launcher binary
+                 (not committed; see Requirements)
 src/shared/      types, system table, emulator profiles, URI builder
 src/main/        Electron main: scanning, artwork, image rendering, SFO and
                  head.bin writers, VPK packing, FTP sync, emulator downloads

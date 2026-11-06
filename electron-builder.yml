@@ -1,6 +1,7 @@
 appId: dev.archvita.app
 productName: ArchVita
 artifactName: ${productName}-${version}-${os}-${arch}.${ext}
+icon: resources/icon.png
 directories:
   output: release
   buildResources: build
@@ -12,6 +13,8 @@ extraResources:
     to: launcher
     filter:
       - eboot.bin
+  - from: resources/icon.png
+    to: icon.png
 asarUnpack:
   - "**/node_modules/sharp/**"
   - "**/node_modules/@img/**"
