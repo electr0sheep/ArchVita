@@ -13,12 +13,12 @@ jobs:
   launcher:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build the launcher with VitaSDK
         run: |
           docker run --rm -v "$PWD":/work -w /work vitasdk/vitasdk:latest \
             sh -c "cmake -S launcher -B build/launcher && cmake --build build/launcher"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: eboot.bin
           path: build/launcher/eboot.bin
@@ -38,8 +38,8 @@ jobs:
             args: --linux --x64
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -52,7 +52,7 @@ jobs:
             echo "package.json says $version but the tag is $GITHUB_REF_NAME"
             exit 1
           fi
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: eboot.bin
           path: resources/launcher
@@ -65,7 +65,7 @@ jobs:
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: "false"
         run: npx electron-builder ${{ matrix.args }} --publish never
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: package-${{ matrix.os }}
           path: |
@@ -79,7 +79,7 @@ jobs:
     needs: package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: assets
           merge-multiple: true

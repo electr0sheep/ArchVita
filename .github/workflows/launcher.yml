@@ -17,12 +17,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build with VitaSDK
         run: |
           docker run --rm -v "$PWD":/work -w /work vitasdk/vitasdk:latest \
             sh -c "cmake -S launcher -B build/launcher && cmake --build build/launcher"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: eboot.bin
           path: build/launcher/eboot.bin

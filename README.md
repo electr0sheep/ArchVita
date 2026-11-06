@@ -123,14 +123,18 @@ npm run dev
 `npm run package` builds a Windows installer with electron-builder.
 
 Releases are built by GitHub Actions (`.github/workflows/release.yml`). To
-publish one: set `version` in `package.json`, commit, then
+publish one, let npm bump the version, commit and tag in one step, then push
+the commit together with its tag:
 
 ```sh
-git tag v0.2.0
-git push origin main v0.2.0
+npm version patch   # or minor / major
+git push --follow-tags
 ```
 
-The workflow refuses a tag that does not match `package.json`. It builds the
+`npm version` updates `package.json` and `package-lock.json` together and
+creates the `v*` tag the workflow listens for. The workflow refuses a tag
+that does not match `package.json`, which is what happens when the version
+is edited by hand and the lockfile is left behind. It builds the
 launcher with VitaSDK, packages the app on Windows, macOS and Linux runners
 with that launcher inside, and attaches everything to a release named after
 the tag. The `ci` workflow type-checks and builds every push and pull request,
