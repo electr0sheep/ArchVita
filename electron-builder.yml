@@ -24,6 +24,8 @@ linux:
   target: AppImage
   category: Utility
 mac:
+  identity: "-"
+  hardenedRuntime: false
   target:
     - target: dmg
       arch:

@@ -67,10 +67,16 @@ Every tagged release on the Releases page carries:
   distributions need the `libfuse2` package for AppImages)
 - `eboot.bin`, the launcher, only needed when running from source
 
-The builds are not code-signed. Windows SmartScreen shows "Windows protected
-your PC"; choose "More info", then "Run anyway". macOS refuses to open an
-unsigned download until its quarantine flag is cleared, so after copying the
-app to Applications run `xattr -cr /Applications/ArchVita.app` once.
+The builds are not signed with a developer certificate. Windows SmartScreen
+shows "Windows protected your PC"; choose "More info", then "Run anyway". The
+macOS app is ad-hoc signed but not notarized, so the first launch of a
+downloaded copy is blocked. Either allow it afterwards under System Settings,
+Privacy & Security ("Open Anyway"), or clear the quarantine flag once after
+copying the app to Applications:
+
+```sh
+xattr -cr /Applications/ArchVita.app
+```
 
 ## Getting started
 
