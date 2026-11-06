@@ -1,4 +1,4 @@
-import sharp from 'sharp'
+import sharp, { type Sharp } from 'sharp'
 
 export const ICON_SIZE = 128
 export const BG_WIDTH = 840
@@ -80,7 +80,7 @@ function labelSvg(width: number, height: number, title: string, subtitle: string
 </svg>`)
 }
 
-async function finish(image: sharp.Sharp): Promise<Buffer> {
+async function finish(image: Sharp): Promise<Buffer> {
   return image.png(PNG_OPTIONS).toBuffer()
 }
 
