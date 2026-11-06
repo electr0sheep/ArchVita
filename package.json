@@ -1,6 +1,6 @@
 {
   "name": "archvita",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "EmuDeck-style bubble builder for the PS Vita: scan a ROM library, fetch artwork, and generate LiveArea bubbles that boot straight into a game.",
   "main": "./out/main/index.js",
   "license": "GPL-3.0-only",
