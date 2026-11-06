@@ -1,0 +1,42 @@
+{
+  "name": "archvita",
+  "version": "0.1.0",
+  "description": "EmuDeck-style bubble builder for the PS Vita: scan a ROM library, fetch artwork, and generate LiveArea bubbles that boot straight into a game.",
+  "main": "./out/main/index.js",
+  "license": "GPL-3.0-only",
+  "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "allowScripts": {
+    "electron@45.2.2": true,
+    "electron-winstaller": true
+  },
+  "scripts": {
+    "dev": "electron-vite dev -w",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.json",
+    "package": "electron-vite build && electron-builder --win",
+    "package:dir": "electron-vite build && electron-builder --dir"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "basic-ftp": "^6.2.5",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.6.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "electron": "^45.2.2",
+    "electron-builder": "^26.18.0",
+    "electron-vite": "^6.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  }
+}

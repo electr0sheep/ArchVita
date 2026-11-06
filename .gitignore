@@ -1,0 +1,9 @@
+node_modules/
+out/
+dist/
+release/
+build/launcher/
+resources/launcher/eboot.bin
+*.log
+.DS_Store
+Thumbs.db

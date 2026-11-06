@@ -1,0 +1,29 @@
+name: launcher
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "launcher/**"
+      - ".github/workflows/launcher.yml"
+  pull_request:
+    paths:
+      - "launcher/**"
+      - ".github/workflows/launcher.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build with VitaSDK
+        run: |
+          docker run --rm -v "$PWD":/work -w /work vitasdk/vitasdk:latest \
+            sh -c "cmake -S launcher -B build/launcher && cmake --build build/launcher"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: eboot.bin
+          path: build/launcher/eboot.bin
+          if-no-files-found: error
